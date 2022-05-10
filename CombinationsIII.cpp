@@ -33,3 +33,62 @@ public:
         
     }
 }
+
+
+// another way slight change ....
+
+class Solution {
+public:
+    void recursion(int index ,int n ,int k ,vector<vector<int>>&ans, vector<int>&ds){
+	
+	   // we may get subset having sum eqauls target even in lesser size than k so we also check ds size
+        if(n == 0 && ds.size()==k){
+            ans.push_back(ds);
+            return;
+        }
+		// if ds size exceeds given size we dont required it 
+        if(ds.size() >= k) return;
+		// index in the range 1 to 9 given constraint
+        if(index >= 10) return;
+		// Pick Logic 
+        if(index<=n){
+            ds.push_back(index);
+            recursion(index+1,n-index,k,ans,ds);
+			// after pick make sure you pop it
+            ds.pop_back();
+        }
+		// Non-Pick Logic
+        recursion(index+1,n,k,ans,ds);
+        
+    }
+    vector<vector<int>> combinationSum3(int k, int n) {
+        vector<vector<int>> ans;
+        vector<int>ds;
+        recursion(1,n,k,ans,ds);
+        return ans;
+        
+    }
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
