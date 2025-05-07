@@ -5,7 +5,7 @@ void permutasing(string s, string ss, int n, int vi[])
 {
     if (s.size()==ss.size())
     {
-        cout<<ss<<'\n;
+        cout<<ss<<'\n';
     }
     for(int i=0;i<n;i++)
     {
